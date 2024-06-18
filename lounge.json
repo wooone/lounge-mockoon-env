@@ -1,0 +1,109 @@
+{
+  "uuid": "8c66b304-0f9d-447d-bce8-ef631e4121c0",
+  "lastMigration": 32,
+  "name": "Lounge",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "4f114b87-6ec8-47a6-a134-7bcf2f63e947",
+      "type": "http",
+      "documentation": "使用者登入",
+      "method": "post",
+      "endpoint": "api/v1/token",
+      "responses": [
+        {
+          "uuid": "7005ad0a-fb3d-4be0-aa2b-c4c594f88871",
+          "body": "{\n  \"access_token\": \"{{faker 'string.uuid'}}\",\n  \"token_type\": \"bearer\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Set-Cookie",
+              "value": "lounge_token= {{faker 'string.uuid'}}; Path=/"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "4f114b87-6ec8-47a6-a134-7bcf2f63e947"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "d3b6887f-c656-40bd-a35d-da20f8f60933",
+      "id": "mea1",
+      "name": "Users",
+      "documentation": "",
+      "value": "[\n  {\n  \"username\": \"123\",\n  \"password\": \"123\"\n}\n]"
+    }
+  ],
+  "callbacks": []
+}
