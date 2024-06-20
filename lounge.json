@@ -24,8 +24,216 @@
           "headers": [
             {
               "key": "Set-Cookie",
-              "value": "lounge_token= {{faker 'string.uuid'}}; Path=/"
+              "value": "lounge_token= {{faker 'string.uuid'}}; Path=/;  SameSite=lax"
             },
+            {
+              "key": "Server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "Content-Length",
+              "value": "288"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "a2b7ebfa-6a11-4ab2-848c-4715e6e8b5c8",
+      "type": "http",
+      "documentation": "使用者登出",
+      "method": "delete",
+      "endpoint": "api/v1/token",
+      "responses": [
+        {
+          "uuid": "ad1ac85f-8d75-4e6b-9c76-7f09c0f10f2f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "登出成功",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "05c7feab-7fbc-4d45-ac72-79bc14477e6e",
+      "type": "http",
+      "documentation": "取得目前登入的使用者資訊",
+      "method": "get",
+      "endpoint": "api/v1/user",
+      "responses": [
+        {
+          "uuid": "e533f02b-533d-475e-89e9-574b5b70ea8b",
+          "body": "{\n  \"account\": \"\",\n  \"name\": \"{{faker 'internet.userName'}}\",\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"id\": {{faker 'number.int' max=99999}},\n  \"due\": \"{{faker 'date.recent' 365}}\",\n  \"suspended\": {{faker 'datatype.boolean'}},\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"updated\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "a642e08b-e29e-459d-b0f1-9857b3195a76",
+      "type": "http",
+      "documentation": "取得使用者可用功能清單",
+      "method": "get",
+      "endpoint": "api/v1/functionality/list",
+      "responses": [
+        {
+          "uuid": "d1100b2c-b9b8-47a5-9fec-791b2a8fa6e1",
+          "body": "{\n  \"user\": true,\n  \"role\": true,\n  \"session\": true,\n  \"affiliation\": true,\n  \"category\": true,\n  \"data\": true,\n  \"field\": true\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "1a65c4a9-491c-4a8d-a58b-8a7bb5343a67",
+      "type": "http",
+      "documentation": "取得全部使用者資訊列表",
+      "method": "get",
+      "endpoint": "api/v1/user/list",
+      "responses": [
+        {
+          "uuid": "2af13790-6f24-423e-8c99-cf7e257a12b1",
+          "body": "[\n  {\n    \"account\": \"\",\n    \"name\": \"\",\n    \"email\": \"\",\n    \"id\": {{faker 'number.int' max=99999}},\n    \"due\": \"{{faker 'date.recent' 365}}\",\n    \"suspended\": {{faker 'datatype.boolean'}},\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"updated\": \"{{faker 'date.recent' 365}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "aaaf10b6-f888-46fd-8cc4-242ef119b1b7",
+      "type": "http",
+      "documentation": "取得使用者角色清單",
+      "method": "get",
+      "endpoint": "api/v1/user/role/list",
+      "responses": [
+        {
+          "uuid": "5bfbdac4-216b-46e0-aafb-7657da4573bb",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "99c859ac-6db7-499e-9f48-81174b94e9a7",
+      "type": "http",
+      "documentation": "取得角色清單",
+      "method": "get",
+      "endpoint": "api/v1/role/list",
+      "responses": [
+        {
+          "uuid": "b8635263-af73-4701-8405-2ed4ced8902d",
+          "body": "[\n  {\n    \"name\": \"\",\n    \"id\": {{faker 'number.int' max=99999}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
             {
               "key": "Content-Type",
               "value": "application/json"
@@ -51,6 +259,30 @@
     {
       "type": "route",
       "uuid": "4f114b87-6ec8-47a6-a134-7bcf2f63e947"
+    },
+    {
+      "type": "route",
+      "uuid": "a2b7ebfa-6a11-4ab2-848c-4715e6e8b5c8"
+    },
+    {
+      "type": "route",
+      "uuid": "05c7feab-7fbc-4d45-ac72-79bc14477e6e"
+    },
+    {
+      "type": "route",
+      "uuid": "a642e08b-e29e-459d-b0f1-9857b3195a76"
+    },
+    {
+      "type": "route",
+      "uuid": "1a65c4a9-491c-4a8d-a58b-8a7bb5343a67"
+    },
+    {
+      "type": "route",
+      "uuid": "aaaf10b6-f888-46fd-8cc4-242ef119b1b7"
+    },
+    {
+      "type": "route",
+      "uuid": "99c859ac-6db7-499e-9f48-81174b94e9a7"
     }
   ],
   "proxyMode": false,
@@ -69,7 +301,7 @@
   "headers": [
     {
       "key": "Content-Type",
-      "value": "application/json"
+      "value": "application/x-www-form-urlencoded"
     },
     {
       "key": "Access-Control-Allow-Origin",
@@ -82,6 +314,10 @@
     {
       "key": "Access-Control-Allow-Headers",
       "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    },
+    {
+      "key": "Accept",
+      "value": "application/json"
     }
   ],
   "proxyReqHeaders": [
@@ -102,7 +338,7 @@
       "id": "mea1",
       "name": "Users",
       "documentation": "",
-      "value": "[\n  {\n  \"username\": \"123\",\n  \"password\": \"123\"\n}\n]"
+      "value": "[\n  {\n  \"username\": \"lainey\",\n  \"password\": \"123\"\n}\n]"
     }
   ],
   "callbacks": []
